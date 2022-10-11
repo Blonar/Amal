@@ -1,0 +1,665 @@
+body {
+background-color: black;
+height: 3028px;
+width: 1300px;
+text-align: center;
+font: 400 16px "Poppins", sans-serif;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.mainsvg{
+  z-index: 4;
+  transform: translate(2%, 18%);
+  width: 1300px;
+  height: 4031.1;
+  position: absolute;
+}
+/*--lightoff--*/
+.power-switch {
+  --color-invert: white;
+  --width: 296px;
+  --height: 296px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--width);
+  height: var(--height);
+}
+.power-switch .button {
+  width: 100%;
+  height: 100%;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.power-switch .button:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: radial-gradient(circle closest-side, var(--color-invert), transparent);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: perspective(1px) translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.power-switch .button .power-on,
+.power-switch .button .power-off {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  fill: none;
+  stroke: var(--color-invert);
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.power-switch .button .power-on .line,
+.power-switch .button .power-off .line {
+  opacity: 1;
+}
+.power-switch .button .power-on .circle,
+.power-switch .button .power-off .circle {
+  opacity: 0.2;
+  transform: rotate(-58deg);
+  transform-origin: center 80px;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 40;
+}
+.power-switch .button .power-on {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.2));
+}
+.power-switch .button .power-on .line {
+  opacity: 0;
+  transition: opacity 0.3s ease 1s;
+}
+.power-switch .button .power-on .circle {
+  opacity: 1;
+  stroke-dashoffset: 220;
+  transition: transform 0s ease, stroke-dashoffset 1s ease 0s;
+}
+.power-switch input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0;
+}
+.power-switch input:checked + .button:after {
+  opacity: 0.15;
+  transform: scale(2) perspective(1px) translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.power-switch input:checked + .button .power-on,
+.power-switch input:checked + .button .power-off {
+  -webkit-animation: click-animation 0.3s ease forwards;
+          animation: click-animation 0.3s ease forwards;
+  transform: scale(1);
+}
+.power-switch input:checked + .button .power-on .line,
+.power-switch input:checked + .button .power-off .line {
+  -webkit-animation: line-animation 0.8s ease-in forwards;
+          animation: line-animation 0.8s ease-in forwards;
+}
+.power-switch input:checked + .button .power-on .circle,
+.power-switch input:checked + .button .power-off .circle {
+  transform: rotate(302deg) scale(2 1.5);
+}
+.power-switch input:checked + .button .power-on .line {
+  opacity: 1;
+  transition: opacity 0.05s ease-in 0.55s;
+}
+.power-switch input:checked + .button .power-on .circle {
+  transform: rotate(302deg) scale(2 1.5);
+  stroke-dashoffset: 40;
+  transition: transform 0.4s ease 0.2s, stroke-dashoffset 0.4s ease 0.2s;
+}
+
+@-webkit-keyframes line-animation {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(10px);
+  }
+  40% {
+    transform: translateY(-25px);
+  }
+  60% {
+    transform:  translateY(-25px);
+  }
+  85% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes line-animation {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(10px);
+  }
+  40% {
+    transform: translateY(-25px);
+  }
+  60% {
+    transform: translateY(-25px);
+  }
+  85% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes click-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(2.2);
+  }
+}
+@keyframes click-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(2.2) translate(5.5px, 20px);
+  }
+}
+.visitable {
+  visibility: hidden;
+}
+  /*------cir4 light---*/
+  .svg-sun{
+    width:300px;
+    height:300px;
+    -webkit-transform-origin: center center;
+    -moz-transform-origin: 50% 50%;
+    -o-transform-origin: center center;
+    -ms-transform-origin: center center;
+    transform-origin:50% 50%;
+    -webkit-animation: sun-glow 99900s 0s ease-in-out infinite;
+  -moz-animation: sun-glow 99900s 0s ease-in-out infinite;
+  -o-animation:sun-glow 99900s 0s ease-in-out infinite;
+  -ms-animation: sun-glow 99900s 0s ease-in-out infinite;
+  animation: sun-glow 99900s 0s ease-in-out infinite;
+  }
+          #sun{
+    stroke-dasharray:2.3, 9.3;
+    stroke-dashoffset:2;
+  }
+          #sun2{
+    stroke-width:9;
+    stroke-dasharray:1.3, 6.3;
+    stroke-dashoffset:2;
+  }
+  @-webkit-keyframes sun-glow { 
+    0% {stroke:#CC60FF;}
+    50% {stroke:#2DDEB4;}
+    100% {stroke:#F90086;}
+  }
+  @-moz-keyframes sun-glow { 
+    0% {stroke:#CC60FF;}
+    50% {stroke:#2DDEB4;}
+    100% {stroke:#F90086;}
+  }
+  @-o-keyframes sun-glow { 
+    0% {stroke:#CC60FF;}
+    50% {stroke:#2DDEB4;}
+    100% {stroke:#F90086;}
+  }
+  @-ms-keyframes sun-glow { 
+    0% {stroke:#CC60FF;}
+    50% {stroke:#2DDEB4;}
+    100% {stroke:#F90086;}
+  }
+  @keyframes sun-glow { 
+    0% {stroke:#CC60FF;}
+    50% {stroke:#2DDEB4;}
+    100% {stroke:#F90086;}
+  }
+  /*--lightoff--*/
+  .power-switch4 {
+      --color-invert: white;
+      --width: 396px;
+      --height: 396px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: var(--width);
+      height: var(--height);
+    }
+    .power-switch4 .button4 {
+      width: 100%;
+      height: 100%;
+  display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .power-switch4 .button4:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity 1s ease, transform 1s ease;
+      transform: perspective(1px) translateZ(0);
+      -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+    }
+    .power-switch4 .button4 .power-on4,
+    .power-switch4 .button4 .power-off4 {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      z-index: 1;
+      fill: none;
+      stroke: var(--color-invert);
+      stroke-width: 0px;
+    }
+    .power-switch4 .button4 .power-on4 .line4,
+    .power-switch4 .button4 .power-off4 .line4 {
+      opacity: 0;
+    }
+    .power-switch4 .button4 .power-on4 .circle4,
+    .power-switch4 .button4 .power-off4 .circle4 {
+      opacity: 0;
+      transform: rotate(-58deg);
+      transform-origin: center 80px;
+      stroke-dasharray: 220;
+      stroke-dashoffset: 40;
+    }
+    .power-switch4 .button4 .power-on4 {
+      filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.2));
+    }
+    /*---here---*/
+    .power-switch4 .button4 .power-off4 .line4 {
+      opacity: 1;
+      transition: opacity 0.3s ease 1s;
+    }
+    .power-switch4 .button4 .power-on4 .circle4 {
+      opacity: 1;
+      stroke-dashoffset: 220;
+      transition: transform 0s ease, stroke-dashoffset 1s ease 0s;
+    }
+    .power-switch4 input {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+      cursor: pointer;
+      opacity: 0;
+    }
+    .power-switch4 input:checked + .button4:after {
+      opacity: 0.15;
+      transform: scale(2) perspective(1px) translateZ(0);
+      -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .power-switch4 input:checked + .button4 .power-on4,
+    .power-switch4 input:checked + .button4 .power-off4 {
+      -webkit-animation: cir4mationc 0.3s ease forwards;
+              animation: cir4mationc 0.3s ease forwards;
+      transform: scale(1);
+    }
+    .power-switch4 input:checked + .button4 .power-on4 .line4,
+    .power-switch4 input:checked + .button4 .power-off4 .line4 {
+      -webkit-animation: cir4mationl 0.8s ease-in forwards;
+              animation: cir4mationl 0.8s ease-in forwards;
+    }
+    .power-switch4 input:checked + .button4 .power-on4 .circle4,
+    .power-switch4 input:checked + .button4 .power-off4 .circle4 {
+      transform: rotate(302deg) scale(2 1.5);
+    }
+    .power-switch4 input:checked + .button4 .power-on4 .line4 {
+      opacity: 1;
+      transition: opacity 0.05s ease-in 0.55s;
+    }
+    .power-switch4 input:checked + .button4 .power-on4 .circle4 {
+      transform: rotate(302deg) scale(2 1.5);
+      stroke-dashoffset: 40;
+      transition: transform 0.4s ease 0.2s, stroke-dashoffset 0.4s ease 0.2s;
+    }
+    
+    @-webkit-keyframes cir4mationl {
+      0% {
+        transform: translateY(0);
+      }
+      10% {
+        transform: translateY(10px);
+      }
+      40% {
+        transform: translateY(-25px);
+      }
+      60% {
+        transform:  translateY(-25px);
+      }
+      85% {
+        transform: translateY(10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    @keyframes cir4mationl {
+      0% {
+        transform: translateY(0);
+      }
+      10% {
+        transform: translateY(10px);
+      }
+      40% {
+        transform: translateY(-25px);
+      }
+      60% {
+        transform: translateY(-25px);
+      }
+      85% {
+        transform: translateY(10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    @-webkit-keyframes cir4mationc {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(2.2);
+      }
+    }
+    @keyframes cir4mationc {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(3.2) translate(5.5px, 20px);
+      }
+    }
+    /*---------cir3 lightoff--------*/
+    /*--lightoff--*/
+.power-switch3 {
+  --color-invert: white;
+  --width: 296px;
+  --height: 296px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--width);
+  height: var(--height);
+}
+.power-switch3 .button3 {
+  width: 100%;
+  height: 100%;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.power-switch3 .button3:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: radial-gradient(circle closest-side, var(--color-invert), transparent);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  transform: perspective(1px) translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.power-switch3 .button3 .power-on3,
+.power-switch3 .button3 .power-off3 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  fill: none;
+  stroke: var(--color-invert);
+  stroke-width: 1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.power-switch3 .button3 .power-on3 .line3,
+.power-switch3 .button3 .power-off3 .line3 {
+  opacity: 1;
+}
+.power-switch3 .button3 .power-on3 .circle3,
+.power-switch3 .button3 .power-off3 .circle3 {
+  opacity: 0.2;
+  transform: rotate(-58deg);
+  transform-origin: center 80px;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 40;
+}
+.power-switch3 .button3 .power-on3 {
+  filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.2));
+}
+.power-switch3 .button3 .power-on3 .line3 {
+  opacity: 0;
+  transition: opacity 0.3s ease 1s;
+}
+.power-switch3 .button3 .power-on3 .circle3 {
+  opacity: 1;
+  stroke-dashoffset: 220;
+  transition: transform 0s ease, stroke-dashoffset 1s ease 0s;
+}
+.power-switch3 input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0;
+}
+.power-switch3 input:checked + .button3:after {
+  opacity: 0.15;
+  transform: scale(2) perspective(1px) translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.power-switch3 input:checked + .button3 .power-on3,
+.power-switch3 input:checked + .button3 .power-off3 {
+  -webkit-animation: click-animation 0.3s ease forwards;
+          animation: click-animation 0.3s ease forwards;
+  transform: scale(1);
+}
+.power-switch3 input:checked + .button3 .power-on3 .line3,
+.power-switch3 input:checked + .button3 .power-off3 .line3 {
+  -webkit-animation: line-animation 0.8s ease-in forwards;
+          animation: line-animation 0.8s ease-in forwards;
+}
+.power-switch3 input:checked + .button3 .power-on3 .circle3,
+.power-switch3 input:checked + .button3 .power-off3 .circle3 {
+  transform: rotate(302deg) scale(2 1.5);
+}
+.power-switch3 input:checked + .button3 .power-on3 .line3 {
+  opacity: 1;
+  transition: opacity 0.05s ease-in 0.55s;
+}
+.power-switch3 input:checked + .button3 .power-on3 .circle3 {
+  transform: rotate(302deg) scale(2 1.5);
+  stroke-dashoffset: 40;
+  transition: transform 0.4s ease 0.2s, stroke-dashoffset 0.4s ease 0.2s;
+}
+
+@-webkit-keyframes line-animation3 {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(10px);
+  }
+  40% {
+    transform: translateY(-25px);
+  }
+  60% {
+    transform:  translateY(-25px);
+  }
+  85% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes line-animation3 {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(10px);
+  }
+  40% {
+    transform: translateY(-25px);
+  }
+  60% {
+    transform: translateY(-25px);
+  }
+  85% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes click-animation3 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(2.2) ;
+  }
+}
+@keyframes click-animation3 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: translate(20 30) scale(2.2) ;
+  }
+}
+
+/*----twinkling stars---*/
+@keyframes move-background {
+  from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+@-webkit-keyframes move-background {
+  from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+@-moz-keyframes move-background {    
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+    @-webkit-keyframes move-background {
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+.background-container{
+	position: fixed;
+	top: 0;
+	left:0;
+	bottom: 0;
+	right: 0;
+}
+.stars {
+ background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+ position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
+  	z-index: 1;
+}
+.twinkling{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+	background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    -moz-animation:move-background 30s linear infinite;
+  -ms-animation:move-background 30s linear infinite;
+  -o-animation:move-background 30s linear infinite;
+  -webkit-animation:move-background 30s linear infinite;
+  animation:move-background 30s linear infinite;
+}
+.clouds{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
+	background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+   -moz-animation:move-background 100s linear infinite;
+  -ms-animation:move-background 100s linear infinite;
+  -o-animation:move-background 100s linear infinite;
+  -webkit-animation:move-background 100s linear infinite;
+  animation:move-background 150s linear infinite;
+}
